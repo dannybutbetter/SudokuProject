@@ -33,3 +33,12 @@ class Cell:
 
        # Draw the cell value or sketched value
        if self.value != 0:  # Draw actual value if set
+           text = font.render(str(self.value), True, (0, 0, 0))
+           self.screen.blit(text, (self.col * self.width + 10, self.row * self.height + 10))
+       elif self.sketched_value != 0:  # Draw sketched value if set
+           text = font.render(str(self.sketched_value), True, (150, 150, 150))
+           self.screen.blit(text, (self.col * self.width + 10, self.row * self.height + 10))
+
+
+       # Draw the border for each individual cell
+       pygame.draw.rect(self.screen, (0, 0, 0), rect, 1)  # Thin black border for each cell
